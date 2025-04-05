@@ -20,10 +20,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |-
-          go run main.go kubernetes/kops
-          go run main.go kubernetes/kubernetes
-          go run main.go hashicorp/terraform
-          go run main.go terraform-providers/terraform-provider-aws
+          go run main.go nixos/nixpkgs
       - name: Commit and push if it changed
         run: |-
           git config user.name "github bot"
