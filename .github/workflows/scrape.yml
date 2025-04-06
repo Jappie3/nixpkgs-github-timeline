@@ -3,7 +3,7 @@ name: Scrape latest data
 on:
   schedule:
     # every 8 hours at 5 mins past the hour
-    - cron: "5 */8 * * *"
+    - cron: "5 1 * * *"
   workflow_dispatch: {}
 
 jobs:
