@@ -1,7 +1,5 @@
-const repos = ["nixos/nixpkgs"];
-
 function loadTimeline() {
-  let repo = document.getElementById("reposelect").value;
+  let repo = "nixos/nixpkgs";
 
   const params = new URLSearchParams(location.search);
   params.set("repo", repo);
@@ -62,20 +60,5 @@ function populateGraph(timeline, repo) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  let select = document.getElementById("reposelect");
-  const urlParams = new URLSearchParams(window.location.search);
-  const repo = urlParams.get("repo");
-  console.log(repo);
-
-  for (var i = 0; i < repos.length; i++) {
-    let opt = repos[i];
-    let el = document.createElement("option");
-    el.textContent = opt;
-    el.value = opt;
-    if (repo != "" && opt == repo) {
-      el.selected = true;
-    }
-    select.appendChild(el);
-  }
   loadTimeline();
 });

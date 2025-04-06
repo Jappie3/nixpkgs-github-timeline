@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <script src="https://cdn.plot.ly/plotly-basic-1.57.1.min.js"></script>
     <script src="timeline.js"></script>
     <style>
@@ -12,14 +12,8 @@
       }
     </style>
   </head>
-<body>
-  <h1>GitHub Issue & PR Timeline</h1>
-  <div>
-  <label for="reposelect">Select Repository:</label>
-  <select id="reposelect" onchange="loadTimeline()">
-  </select>
-  <p>Add more repos to this list by opening a <a href="https://github.com/rifelpet/github-timeline">pull request</a></p>
-  </div>
-  <div id="graph" style="width: 1200px; height: 720;"></div>
-</body>
+  <body>
+    <h1>GitHub Issue & PR Timeline</h1>
+    <div id="graph" style="width: 1200px; height: 720"></div>
+  </body>
 </html>
