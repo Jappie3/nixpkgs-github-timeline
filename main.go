@@ -11,7 +11,9 @@ import (
 	"time"
 
 	"github.com/gofri/go-github-pagination/githubpagination"
-	"github.com/gofri/go-github-ratelimit/github_ratelimit"
+	"github.com/gofri/go-github-ratelimit/v2/github_ratelimit"
+	"github.com/gofri/go-github-ratelimit/v2/github_ratelimit/github_primary_ratelimit"
+	"github.com/gofri/go-github-ratelimit/v2/github_ratelimit/github_secondary_ratelimit"
 	"github.com/google/go-github/v71/github"
 )
 
@@ -24,9 +26,6 @@ type datapoint struct {
 type report struct {
 	Timeline []datapoint `json:"timeline"`
 }
-
-// keep it simple
-const daysPerMonth = 30
 
 func main() {
 	if len(os.Args) != 2 {
@@ -41,11 +40,24 @@ func main() {
 
 	ctx := context.Background()
 
-	rateLimiter, err := github_ratelimit.NewRateLimitWaiterClient(nil)
-	if err != nil {
-		log.Fatalf("failed to create github rate limiter client: %v", err)
-	}
-	paginator := githubpagination.NewClient(rateLimiter.Transport,
+	rateLimiter := github_ratelimit.New(nil,
+		github_primary_ratelimit.WithLimitDetectedCallback(func(ctx *github_primary_ratelimit.CallbackContext) {
+			now := time.Now()
+			timeUntilReset := ctx.ResetTime.Sub(now)
+			fmt.Printf("Primary rate limit detected: category %s, reset time: %v\n", ctx.Category, ctx.ResetTime)
+
+			if timeUntilReset > 0 {
+				fmt.Printf("Waiting %.fs until rate limit reset...\n",
+					timeUntilReset.Seconds())
+				time.Sleep(timeUntilReset)
+				fmt.Println("Rate limit reset completed, continuing...")
+			}
+		}),
+		github_secondary_ratelimit.WithLimitDetectedCallback(func(ctx *github_secondary_ratelimit.CallbackContext) {
+			fmt.Printf("Secondary rate limit detected: reset time: %v, total sleep time: %v\n", ctx.ResetTime, ctx.TotalSleepTime)
+		}),
+	)
+	paginator := githubpagination.NewClient(rateLimiter,
 		githubpagination.WithPerPage(50), // default to 100 results per page
 		githubpagination.WithPaginationEnabled(),
 	)
