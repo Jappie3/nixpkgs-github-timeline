@@ -24512,13 +24512,18 @@
     },
     {
       "day": "2025-11-05T00:00:00Z",
-      "open_issues": 8322,
+      "open_issues": 8323,
       "open_prs": 9034
     },
     {
       "day": "2025-11-06T00:00:00Z",
-      "open_issues": 8287,
-      "open_prs": 8799
+      "open_issues": 8304,
+      "open_prs": 9082
+    },
+    {
+      "day": "2025-11-07T00:00:00Z",
+      "open_issues": 8272,
+      "open_prs": 8756
     }
   ]
 }
