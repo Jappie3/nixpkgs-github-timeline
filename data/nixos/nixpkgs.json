@@ -24552,13 +24552,23 @@
     },
     {
       "day": "2025-11-13T00:00:00Z",
-      "open_issues": 8294,
+      "open_issues": 8295,
       "open_prs": 9115
     },
     {
       "day": "2025-11-14T00:00:00Z",
-      "open_issues": 8271,
-      "open_prs": 8889
+      "open_issues": 8304,
+      "open_prs": 9177
+    },
+    {
+      "day": "2025-11-15T00:00:00Z",
+      "open_issues": 8322,
+      "open_prs": 9162
+    },
+    {
+      "day": "2025-11-16T00:00:00Z",
+      "open_issues": 8303,
+      "open_prs": 8937
     }
   ]
 }
