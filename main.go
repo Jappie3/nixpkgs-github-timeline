@@ -18,9 +18,11 @@ import (
 )
 
 type datapoint struct {
-	Day        time.Time `json:"day"`
-	OpenIssues int       `json:"open_issues"`
-	OpenPRs    int       `json:"open_prs"`
+	Day          time.Time `json:"day"`
+	OpenIssues   int       `json:"open_issues"`
+	ClosedIssues int       `json:"closed_issues"`
+	OpenPRs      int       `json:"open_prs"`
+	ClosedPRs    int       `json:"closed:prs"`
 }
 
 type report struct {

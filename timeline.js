@@ -35,17 +35,29 @@ function loadTimeline() {
 }
 
 function populateGraph(timeline, repo) {
-  var issues = {
+  var open_issues = {
     type: "scatter",
     name: "Issues",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["open_issues"]),
   };
-  var prs = {
+  var closed_issues = {
+    type: "scatter",
+    name: "Issues",
+    x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
+    y: timeline.map((a) => a["closed_issues"]),
+  };
+  var open_prs = {
     type: "scatter",
     name: "PRs",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["open_prs"]),
+  };
+  var closed_prs = {
+    type: "scatter",
+    name: "PRs",
+    x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
+    y: timeline.map((a) => a["closed_prs"]),
   };
 
   let layout = {
@@ -55,7 +67,7 @@ function populateGraph(timeline, repo) {
     showSendToCloud: false,
     autosize: true,
   };
-  var data = [issues, prs];
+  var data = [open_issues, closed_issues, open_prs, closed_prs];
   Plotly.newPlot("graph", data, layout, { displayModeBar: false });
 }
 
