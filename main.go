@@ -51,7 +51,7 @@ func main() {
 			if timeUntilReset > 0 {
 				fmt.Printf("Waiting %.fs until rate limit reset...\n",
 					timeUntilReset.Seconds())
-				time.Sleep(timeUntilReset)
+				time.Sleep(timeUntilReset + 60)
 				fmt.Println("Rate limit reset completed, continuing...")
 			}
 		}),
