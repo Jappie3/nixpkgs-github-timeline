@@ -22,7 +22,7 @@ type datapoint struct {
 	OpenIssues   int       `json:"open_issues"`
 	ClosedIssues int       `json:"closed_issues"`
 	OpenPRs      int       `json:"open_prs"`
-	ClosedPRs    int       `json:"closed:prs"`
+	ClosedPRs    int       `json:"closed_prs"`
 }
 
 type report struct {
@@ -107,6 +107,20 @@ func main() {
 				data[index].OpenPRs++
 			} else {
 				data[index].OpenIssues++
+			}
+		}
+	}
+	for _, issue := range allIssues {
+		if issue.ClosedAt == nil {
+			break
+		}
+		closedDay := time.Date(issue.ClosedAt.Year(), issue.ClosedAt.Month(), issue.ClosedAt.Day(), 0, 0, 0, 0, time.UTC)
+		for d := closedDay; !d.After(now); d = d.AddDate(0, 0, 1) {
+			index := int(d.Sub(oldestDay).Hours() / 24)
+			if issue.IsPullRequest() {
+				data[index].ClosedPRs++
+			} else {
+				data[index].ClosedIssues++
 			}
 		}
 	}

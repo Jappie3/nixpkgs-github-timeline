@@ -37,25 +37,25 @@ function loadTimeline() {
 function populateGraph(timeline, repo) {
   var open_issues = {
     type: "scatter",
-    name: "Issues",
+    name: "Open issues",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["open_issues"]),
   };
   var closed_issues = {
     type: "scatter",
-    name: "Issues",
+    name: "Closed issues",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["closed_issues"]),
   };
   var open_prs = {
     type: "scatter",
-    name: "PRs",
+    name: "Open PRs",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["open_prs"]),
   };
   var closed_prs = {
     type: "scatter",
-    name: "PRs",
+    name: "Closed PRs",
     x: timeline.map((a) => a.day.replace("T00:00:00Z", " 00:00:00")),
     y: timeline.map((a) => a["closed_prs"]),
   };
