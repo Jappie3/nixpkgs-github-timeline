@@ -34718,14 +34718,21 @@
       "open_issues": 8476,
       "closed_issues": 43190,
       "open_prs": 9859,
-      "closed_prs": 412414
+      "closed_prs": 412413
     },
     {
       "day": "2026-01-02T00:00:00Z",
-      "open_issues": 8456,
-      "closed_issues": 43194,
-      "open_prs": 9523,
-      "closed_prs": 412429
+      "open_issues": 8500,
+      "closed_issues": 43225,
+      "open_prs": 9801,
+      "closed_prs": 412710
+    },
+    {
+      "day": "2026-01-03T00:00:00Z",
+      "open_issues": 8467,
+      "closed_issues": 43230,
+      "open_prs": 9557,
+      "closed_prs": 412742
     }
   ]
 }
